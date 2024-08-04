@@ -1,6 +1,14 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { Toaster } from '@/Components/ui/sonner';
+import { usePage } from '@inertiajs/vue3'
+
+const page = usePage()
+const user = computed(() => page.props.auth.user)
+
+if (!user.value) {
+	window.location.href = route('login')
+}
 
 const showingNavigationDropdown = ref(false);
 
@@ -65,7 +73,7 @@ const links: NavLink[] = [
 
 									<template #content>
 										<DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
-										<DropdownLink :href="route('logout')" method="post" as="button">
+										<DropdownLink as="button" href="/auth/logout">
 											Log Out
 										</DropdownLink>
 									</template>

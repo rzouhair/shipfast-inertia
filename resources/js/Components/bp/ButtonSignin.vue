@@ -25,12 +25,11 @@ const isAuthenticated = computed<boolean>(() => !!user.value);
       Logout
     </Link>
   </template>
-  <Link
+  <a
     v-else
-    class="btn"
-    method="get"
-    :href="route('register')"
+    class="btn btn-primary"
+    :href="route('login')"
   >
     Get Started
-  </Link>
+  </a>
 </template>

@@ -8,6 +8,7 @@
 /vendor
 /resources/js/auto-imports.d.ts
 /resources/js/components-imports.d.ts
+/resources/js/components.d.ts
 .env
 .env.backup
 .env.production

@@ -42,10 +42,4 @@ Route::middleware('auth')->group(function () {
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('sitemap.xml', function () {
-  SitemapGenerator::create('http://')->writeToFile('sitemap.xml');
-  return response()->file('sitemap.xml');
-});
-
-
 require __DIR__ . '/auth.php';
