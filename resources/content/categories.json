@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Technology",
+    "slug": "technology",
+    "description": "Technology is the sum of techniques, skills, methods, and processes used in the production of goods or services or in the accomplishment of objectives, such as scientific investigation."
+  },
+  {
+    "id": 2,
+    "name": "Science",
+    "slug": "science",
+    "description": "Science is a systematic enterprise that builds and organizes knowledge in the form of testable explanations and predictions about the universe."
+  },
+  {
+    "id": 3,
+    "name": "Health",
+    "slug": "health",
+    "description": "Health is a state of complete physical, mental and social well-being and not merely the absence of disease or infirmity."
+  },
+  {
+    "id": 4,
+    "name": "Business",
+    "slug": "business",
+    "description": "Business is the activity of making one's living or making money by producing or buying and selling products."
+  },
+  {
+    "id": 5,
+    "name": "Entertainment",
+    "slug": "entertainment",
+    "description": "Entertainment is a form of activity that holds the attention and interest of an audience or gives pleasure and delight."
+  },
+  {
+    "id": 6,
+    "name": "Sports",
+    "slug": "sports",
+    "description": "Sports are all forms of usually competitive physical activity or games which, through casual or organized participation, aim to use, maintain or improve physical ability and skills while providing enjoyment to participants, and in some cases, entertainment for spectators."
+  },
+  {
+    "id": 7,
+    "name": "Education",
+    "slug": "education",
+    "description": "Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits."
+  },
+  {
+    "id": 8,
+    "name": "Travel",
+    "slug": "travel",
+    "description": "Travel is the movement of people between distant geographical locations."
+  },
+  {
+    "id": 9,
+    "name": "Lifestyle",
+    "slug": "lifestyle",
+    "description": "Lifestyle is the interests, opinions, behaviours, and behavioural orientations of an individual, group, or culture."
+  },
+  {
+    "id": 10,
+    "name": "Politics",
+    "slug": "politics",
+    "description": "Politics is the set of activities that are associated with making decisions in groups, or other forms of power relations between individuals, such as the distribution of resources or status."
+  }
+]

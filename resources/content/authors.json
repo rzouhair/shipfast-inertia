@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2b3e1b1e-4f7b-4b1e-8f1e-4f7b2b3e1b1e",
+    "slug": "john-doe",
+    "name": "John Doe",
+    "description": "John Doe is a web developer, designer, and writer.",
+    "email": "john@doe.com",
+    "avatar": "https://i.pravatar.cc/150?img=68"
+  },
+  {
+    "id": "4f7b2b3e-1e4f-7b2b-3e1e-4f7b2b3e1e4f",
+    "slug": "jane-doe",
+    "name": "Jane Doe",
+    "description": "Jane Doe is a web developer, designer, and writer.",
+    "email": "jane@doe.com",
+    "avatar": "https://i.pravatar.cc/150?img=68"
+  }
+]
