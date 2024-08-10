@@ -2,6 +2,7 @@
 import { Link, router } from '@inertiajs/vue3';
 import { Toaster } from '@/Components/ui/sonner';
 import { usePage } from '@inertiajs/vue3'
+import config from '@/config';
 
 const page = usePage()
 const user = computed(() => page.props.auth.user)
@@ -30,8 +31,8 @@ const links: NavLink[] = [
 	<AppHead />
 
 	<div>
-		<div class="min-h-screen bg-gray-100 dark:bg-gray-900" data-theme="halloween">
-			<nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+		<div class="min-h-screen" :data-theme="config.colors.theme">
+			<nav class="border-b border-base-300 bg-base-200">
 				<!-- Primary Navigation Menu -->
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="flex justify-between h-16">
@@ -39,7 +40,7 @@ const links: NavLink[] = [
 							<!-- Logo -->
 							<div class="shrink-0 flex items-center">
 								<Link :href="route('dashboard')">
-									<ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+									<ApplicationLogo class="block h-9 w-auto fill-current" />
 								</Link>
 							</div>
 
@@ -52,13 +53,15 @@ const links: NavLink[] = [
 						</div>
 
 						<div class="hidden sm:flex sm:items-center sm:ms-6">
+							<div v-if="user.has_access" class="badge badge-accent ms-3 relative">Paid Plan</div>
+							<div v-else class="badge badge-default ms-3 relative">Free Plan</div>
 							<!-- Settings Dropdown -->
 							<div class="ms-3 relative">
 								<Dropdown align="right" width="48">
 									<template #trigger>
 										<span class="inline-flex rounded-md">
 											<button type="button"
-												class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+												class="btn btn-ghost">
 												{{ $page.props.auth.user.name }}
 
 												<svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -84,7 +87,7 @@ const links: NavLink[] = [
 						<!-- Hamburger -->
 						<div class="-me-2 flex items-center sm:hidden">
 							<button @click="showingNavigationDropdown = !showingNavigationDropdown"
-								class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
+								class="btn btn-ghost">
 								<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 									<path :class="{
 										hidden: showingNavigationDropdown,
@@ -102,7 +105,7 @@ const links: NavLink[] = [
 
 				<!-- Responsive Navigation Menu -->
 				<div :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }" class="sm:hidden">
-					<div class="pt-2 pb-3 space-y-1">
+					<div class="pt-2 pb-3 px-4 md:px-0 space-y-1">
 						<ResponsiveNavLink v-for="link in links" :key="link.text" :href="link.href" :active="link.active">
 							{{ link.text }}
 						</ResponsiveNavLink>
@@ -111,7 +114,7 @@ const links: NavLink[] = [
 					<!-- Responsive Settings Options -->
 					<div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
 						<div class="px-4">
-							<div class="font-medium text-base text-gray-800 dark:text-gray-200">
+							<div class="font-medium text-base">
 								{{ $page.props.auth.user.name }}
 							</div>
 							<div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
@@ -119,16 +122,16 @@ const links: NavLink[] = [
 
 						<div class="mt-3 space-y-1">
 							<ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-							<ResponsiveNavLink :href="route('logout')" method="post" as="button">
+							<Link :href="route('logout')" method="post" as="button" class="btn btn-ghost flex w-full">
 								Log Out
-							</ResponsiveNavLink>
+							</Link>
 						</div>
 					</div>
 				</div>
 			</nav>
 
 			<!-- Page Heading -->
-			<header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
+			<header class="shadow bg-base-100" v-if="$slots.header">
 				<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 					<slot name="header" />
 				</div>

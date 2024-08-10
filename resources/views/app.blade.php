@@ -1,5 +1,12 @@
+<?php
+// Import @/config.ts file and read the colors.theme value
+$theme = file_get_contents(resource_path('js/config.ts'));
+preg_match('/theme: "(.*?)"/', $theme, $matches);
+$theme = $matches[1];
+?>
+
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="cupcake">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="{{ $theme }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

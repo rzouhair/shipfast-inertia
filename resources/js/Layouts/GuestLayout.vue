@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import BpHeader from '@/Components/bp/BpHeader.vue';
+import config from '@/config';
 </script>
 
 <template>
 	<AppHead />
 
-  <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900" data-theme="halloween">
+  <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900" :data-theme="config.colors.theme">
     <div>
       <Link href="/admin">
       <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />

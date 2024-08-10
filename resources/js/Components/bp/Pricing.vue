@@ -10,45 +10,74 @@ const plans: {
       name: string;
   }[];
 }[] = [
-  {
-    isFeatured: false,
-    priceId: 'price_1JZ9Z2Lz1jgjJ9z2',
-    name: 'Starter',
-    description: 'For small projects',
-    price: 29,
-    priceAnchor: 49,
-    features: [
-      { name: 'Unlimited projects' },
-      { name: 'Unlimited users' },
-      { name: 'Unlimited storage' },
-    ],
-  },
-  {
-    isFeatured: true,
-    priceId: 'price_1JZ9Z2Lz1jgjJ9z3',
-    name: 'Pro',
-    description: 'For medium projects',
-    price: 49,
-    priceAnchor: 79,
-    features: [
-      { name: 'All Starter features' },
-      { name: 'Priority support' },
-      { name: 'Unlimited projects' },
-    ],
-  },
-  {
-    priceId: 'price_1JZ9Z2Lz1jgjJ9z4',
-    name: 'Enterprise',
-    description: 'For large projects',
-    price: 99,
-    priceAnchor: 149,
-    features: [
-      { name: 'All Pro features' },
-      { name: 'Dedicated support' },
-      { name: 'Unlimited projects' },
-    ],
-  },
-]
+      {
+        // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
+        priceId:
+          process.env.NODE_ENV === "development"
+            ? "price_1PkxB8RwFk6kfvU5kJSQfWCg"
+            : "price_456",
+        //  REQUIRED - Name of the plan, displayed on the pricing page
+        name: "Starter",
+        // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
+        description: "Perfect for small projects",
+        // The price you want to display, the one user will be charged on Stripe.
+        price: 120,
+        // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
+        priceAnchor: 149,
+        features: [
+          {
+            name: "NextJS boilerplate",
+          },
+          { name: "User oauth" },
+          { name: "Database" },
+          { name: "Emails" },
+        ],
+      },
+      {
+        priceId:
+          process.env.NODE_ENV === "development"
+            ? "price_1PkxBRRwFk6kfvU5LHiMa566"
+            : "price_456",
+        // This plan will look different on the pricing page, it will be highlighted. You can only have one plan with isFeatured: true
+        isFeatured: true,
+        name: "Featured",
+        description: "You need more power",
+        price: 150,
+        priceAnchor: 299,
+        features: [
+          {
+            name: "NextJS boilerplate",
+          },
+          { name: "User oauth" },
+          { name: "Database" },
+          { name: "Emails" },
+          { name: "1 year of updates" },
+          { name: "24/7 support" },
+        ],
+      },
+      {
+        priceId:
+          process.env.NODE_ENV === "development"
+            ? "price_1PkxBfRwFk6kfvU5h4OYnSzV"
+            : "price_456",
+        // This plan will look different on the pricing page, it will be highlighted. You can only have one plan with isFeatured: true
+        isFeatured: false,
+        name: "Advanced",
+        description: "You need more power",
+        price: 200,
+        priceAnchor: 299,
+        features: [
+          {
+            name: "NextJS boilerplate",
+          },
+          { name: "User oauth" },
+          { name: "Database" },
+          { name: "Emails" },
+          { name: "1 year of updates" },
+          { name: "24/7 support" },
+        ],
+      },
+    ]
 </script>
 
 <template>
@@ -70,7 +99,6 @@ const plans: {
               POPULAR
             </span>
           </div>
-
           <div
             v-if="plan.isFeatured"
             class="absolute -inset-[1px] rounded-[9px] bg-primary z-10"

@@ -1,20 +1,46 @@
 <script setup lang="ts">
 import config from '@/config';
+import { usePage } from '@inertiajs/vue3';
+const props = defineProps<{
+  priceId: string;
+}>();
+
+const page = usePage()
+const user = computed(() => page.props.auth.user)
+const isAuthenticated = computed(() => !!user.value)
 
 const isLoading = ref(false)
 
-function handlePayment () {
-  isLoading.value = true
-  // TODO: handle payment
-  setTimeout(() => {
+async function handlePayment () {
+  try {
+    if (user.value.has_access) {
+      return
+    }
+    if (!isAuthenticated.value) {
+      window.location.href = '/auth/register'
+      return
+    }
+    isLoading.value = true
+    const response = await fetch('/checkout?priceId=' + props.priceId, {
+      method: 'GET',
+    })
+
+    const url = await response.json()
+
+    window.location.href = url
+  } catch (error) {
+    console.error(error)
+  } finally {
     isLoading.value = false
-  }, 2000)
+  }
 }
 </script>
 
 <template>
   <button
     class="btn btn-primary btn-block group"
+    :disabled="user?.has_access"
+    :class="{ 'opacity-50': user?.has_access }"
     @click="handlePayment"
   >
     <span v-if="isLoading" class="loading loading-spinner loading-xs"></span>
