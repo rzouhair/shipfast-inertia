@@ -13,7 +13,7 @@ const isLoading = ref(false)
 
 async function handlePayment () {
   try {
-    if (user.value.has_access) {
+    if (user.value?.has_access) {
       return
     }
     if (!isAuthenticated.value) {
