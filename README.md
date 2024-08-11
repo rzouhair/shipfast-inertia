@@ -1,3 +1,32 @@
+# Laravel - Vue - Inertia - Tailwind
+
+This is a Laravel + Vue + Inertia + Tailwind boilerplate.
+
+## Installation
+
+```bash
+git clone https://github.com/laravel-frontend/boilerplate.git
+
+cd boilerplate
+cp .env.example .env
+
+composer install
+npm install
+
+./vendor/bin/sail artisan key:generate
+
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan migrate
+
+npm run dev
+```
+
+## Usage
+Open http://localhost:90
+
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
