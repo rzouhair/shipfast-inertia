@@ -10,7 +10,7 @@ use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Checkout;
 
 Route::get('/', function () {
-  return Inertia::render('Index', [
+  return Inertia::render('index', [
     'canLogin' => Route::has('login'),
     'canRegister' => Route::has('register'),
     'laravelVersion' => Application::VERSION,
@@ -19,11 +19,11 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/privacy-policy', function () {
-  return Inertia::render('PrivacyPolicy');
+  return Inertia::render('privacy-policy');
 })->name('privacy-policy');
 
 Route::get('/terms-of-services', function () {
-  return Inertia::render('TermsOfServices');
+  return Inertia::render('terms-of-services');
 })->name('terms-of-services');
 
 Route::prefix('/blog')->group(function () {
@@ -34,7 +34,7 @@ Route::prefix('/blog')->group(function () {
 });
 
 Route::get('/dashboard', function () {
-  return Inertia::render('Dashboard');
+  return Inertia::render('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -75,9 +75,32 @@ Route::get('/checkout/success', function (Request $request) {
 
   $order->update(['status' => 'completed']); */
 
-  return Inertia::render('CheckoutSuccess');
+  return redirect()->route('dashboard');
 })->name('checkout-success');
 
 Route::stripeWebhooks('/stripe-webhook');
+
+$dynamicRoute = Route::get('/{path?}', function ($test) {
+  $path = trim(request()->path(), '/');
+  $lowerPath = strtolower($path);
+  $doesRouteExist = Route::has($lowerPath);
+
+  if ($doesRouteExist) {
+    return redirect()->route($path);
+  }
+
+  $doesInertiaExist = file_exists(resource_path("js/Pages/{$lowerPath}.vue"));
+  
+  if ($doesInertiaExist) {
+    return Inertia::render("{$lowerPath}", [
+      'title' => ucfirst($path),
+      'name' => "{$lowerPath}",
+    ]);
+  }
+
+  return Inertia::render('NotFound');
+})
+->name('path')
+->where('path', '^(?!auth).*');
 
 require __DIR__ . '/auth.php';

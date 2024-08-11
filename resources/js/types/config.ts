@@ -20,7 +20,7 @@ export type Theme =
   | "black"
   | "luxury"
   | "dracula"
-  | "";
+  | "mytheme";
 
 export interface ConfigProps {
   appName: string;

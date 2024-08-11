@@ -33,7 +33,7 @@ class BlogController extends Controller
                 'query' => $request->query(),
             ]
         );
-        return Inertia::render('Blog/Index', [
+        return Inertia::render('blog/index', [
             'posts' =>  $this->service->getAll(true) ?? [],
             'paginated_posts' => $paginated_posts ?? [],
             'categories' => $this->categories ?? [],
@@ -53,7 +53,7 @@ class BlogController extends Controller
                 'query' => $request->query(),
             ]
         );
-        return Inertia::render('Blog/Category', [
+        return Inertia::render('blog/category', [
             'posts' =>  $this->service->getAll(true) ?? [],
             'paginated_posts' => $paginated_posts ?? [],
             'categories' => $this->categories ?? [],
@@ -73,7 +73,7 @@ class BlogController extends Controller
                 'query' => $request->query(),
             ]
         );
-        return Inertia::render('Blog/Author', [
+        return Inertia::render('blog/author', [
             'posts' =>  $this->service->getAll(true) ?? [],
             'paginated_posts' => $paginated_posts ?? [],
             'categories' => $this->categories ?? [],
@@ -84,7 +84,7 @@ class BlogController extends Controller
     public function show($slug)
     {
         $post = $this->service->getOne($slug);
-        return Inertia::render('Blog/Post', [
+        return Inertia::render('blog/post', [
             'slug' => $slug,
             'post' => $post ?? [],
             'categories' => $this->categories ?? [],

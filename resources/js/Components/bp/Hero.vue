@@ -25,8 +25,8 @@ import TestimonialAvatars from './TestimonialAvatars.vue';
       <h1 class="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 !leading-[1.3]">
         <span class="relative z-10">Ship your startup in days,</span>
         <span class=" relative whitespace-nowrap">
-          <span class="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1"></span>
-          <span class="relative text-neutral">not weeks</span>
+          <span class="absolute bg-primary -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1"></span>
+          <span class="relative text-primary-content">not weeks</span>
         </span>
       </h1>
       <p class="text-lg opacity-80 leading-relaxed">
