@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { articleType, categoryType } from '@/types/content';
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps<{
   post: articleType,
@@ -9,6 +9,8 @@ defineProps<{
 </script>
 
 <template>
+  <Head :title="post.title" />
+
   <BlogLayout :categories="categories">
     <header>
       <Link href="/blog" class="btn btn-ghost">

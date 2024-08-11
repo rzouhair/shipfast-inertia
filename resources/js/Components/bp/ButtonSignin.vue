@@ -12,7 +12,7 @@ const isAuthenticated = computed<boolean>(() => !!user.value);
   <template v-if="isAuthenticated">
     <Link
       :href="config.auth.callbackUrl"
-      class="btn btn-circle rounded-full"
+      class="btn btn-circle bg-base-300 rounded-full"
     >
       {{ user.email.charAt(0).toUpperCase() }}
     </Link>

@@ -2,6 +2,7 @@
 import config from '@/config';
 import { articleType, authorType, categoryType } from '@/types/content';
 import { PaginatedData } from '@/types/pagination';
+import { Head } from '@inertiajs/vue3';
 
 const props = defineProps<{
   posts: articleType[];
@@ -17,6 +18,8 @@ const props = defineProps<{
 </script>
 
 <template>
+  <Head :title="author.name" />
+
   <BlogLayout :categories="categories">
     <section class="text-center max-w-xl mx-auto mt-12 mb-8">
       <h1 class="font-extrabold text-3xl lg:text-5xl tracking-tight mb-6">
